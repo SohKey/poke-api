@@ -8,17 +8,17 @@ module.exports = (app) => {
     Pokemon.create(req.body)
       .then(pokemon => {
         const message = `Le pokémon ${req.body.name} a bien été crée.`
-        res.json({ message, data: pokemon })
+        res.json({ message, pokemon })
       })
       .catch(error => {
         if (error instanceof ValidationError) {
-          return res.status(400).json({ message: error.message, data: error})
+          return res.status(400).json({ message: error.message, error})
         }
         if (error instanceof UniqueConstraintError) {
-          return res.status(400).json({ message: error.message, data: error})
+          return res.status(400).json({ message: error.message, error})
         }
         const message = 'Le pokemon n\'a pas pu être ajouté. Réessayer dans quelques intants'
-        res.status(500).json({ message, data: error })
+        res.status(500).json({ message, error })
       })
   })
 }

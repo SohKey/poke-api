@@ -12,21 +12,21 @@ module.exports = (app) => {
       return Pokemon.findByPk(id).then(pokemon => {
         if (pokemon === null) {
             const message = 'Le pokemon n\'existe pas. Réessayer avec un nouvel identifiant'
-            res.status(404).json({ message, data: error })
+            res.status(404).json({ message, error })
         }
         const message = `Le pokémon ${pokemon.name} a bien été modifié.`
-        res.json({message, data: pokemon })
+        res.json({message, pokemon })
       })
     })
     .catch(error => {
       if (error instanceof ValidationError) {
-        return res.status(400).json({ message: error.message, data: error})
+        return res.status(400).json({ message: error.message, error})
       }
       if (error instanceof UniqueConstraintError) {
-        return res.status(400).json({ message: error.message, data: error})
+        return res.status(400).json({ message: error.message, error})
       }
       const message = 'Le pokemon n\'a pas pu être modifié. Réessayer dans quelques intants'
-      res.status(500).json({ message, data: error })
+      res.status(500).json({ message, error })
     })
   })
 }

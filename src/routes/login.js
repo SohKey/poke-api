@@ -30,7 +30,7 @@ module.exports = (app) => {
         })
         .catch(error => {
             const message = `L'utilisateur n'a pas pu être connecté. Réessayez dans quelques instants.`
-            res.status(500).json({ message, data: error })
+            res.status(500).json({ message, error })
         })
     })
 }
