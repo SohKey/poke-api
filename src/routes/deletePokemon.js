@@ -6,7 +6,7 @@ module.exports = (app) => {
      Pokemon.findByPk(req.params.id).then(pokemon => {
       if (pokemon === null) {
         const message = 'Le pokemon n\'existe pas. Réessayer avec un nouvel identifiant'
-        res.status(404).json({ message, error })
+        res.status(404).json({ message, data: error })
       }
       const pokemonDeleted = pokemon;
       return Pokemon.destroy({
@@ -19,7 +19,7 @@ module.exports = (app) => {
     })
     .catch(error => {
       const message = 'Le pokemon n\'a pas pu être supprimé. Réessayer dans quelques intants'
-      res.status(500).json({ message, error })
+      res.status(500).json({ message, data: error })
     })
   })
 }

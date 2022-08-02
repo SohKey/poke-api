@@ -5,7 +5,7 @@ module.exports = (app) => {
     Pokemon.findByPk(req.params.id)
       .then(pokemon => {
         const message = 'Un pokémon a bien été trouvé.'
-        res.json({ message, pokemon })
+        res.json({ message, data: pokemon })
       })
       .catch(error => {
         const message = 'Le pokemon n\'a pas pu être récupéré. Réessayer dans quelques intants'

@@ -14,7 +14,7 @@ module.exports = (app) => {
             return bcrypt.compare(req.body.userInfos.password, user.password).then(isPasswordValid => {
                 if(!isPasswordValid) {
                     const message = `Le mot de passe est incorrect.`
-                    return res.status(401).json({message})
+                    return res.status(401).json({ message })
                 }
   
             // Générer un jeton JWT valide pendant 24 heures.
@@ -25,12 +25,12 @@ module.exports = (app) => {
             );
             
             const message = `L'utilisateur a été connecté avec succès`;
-            return res.json({ message, data: user, token })
+            return res.json({ message, data: user.id, token })
             })
         })
         .catch(error => {
             const message = `L'utilisateur n'a pas pu être connecté. Réessayez dans quelques instants.`
-            res.status(500).json({ message, error })
+            res.status(500).json({ message, data: error })
         })
     })
 }

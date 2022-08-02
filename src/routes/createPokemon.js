@@ -8,7 +8,7 @@ module.exports = (app) => {
     Pokemon.create(req.body)
       .then(pokemon => {
         const message = `Le pokémon ${req.body.name} a bien été crée.`
-        res.json({ message, pokemon })
+        res.json({ message, data: pokemon })
       })
       .catch(error => {
         if (error instanceof ValidationError) {
@@ -18,7 +18,7 @@ module.exports = (app) => {
           return res.status(400).json({ message: error.message, error})
         }
         const message = 'Le pokemon n\'a pas pu être ajouté. Réessayer dans quelques intants'
-        res.status(500).json({ message, error })
+        res.status(500).json({ message, data: error })
       })
   })
 }

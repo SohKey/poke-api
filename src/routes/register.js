@@ -25,7 +25,7 @@ module.exports = (app) => {
               return res.status(400).json({ message: error.message, error})
             }
             const message = 'Le compte n\'a pas pu être créer. Réessayer dans quelques intants'
-            res.status(500).json({ message, error })
+            res.status(500).json({ message, data: error })
           })
     })
 }

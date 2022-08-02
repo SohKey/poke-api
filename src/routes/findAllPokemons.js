@@ -41,11 +41,11 @@ module.exports = (app) => {
       })
         .then(pokemons => {
           const message = 'La liste des pokémons a bien été récupérée.'
-          res.json({ message, pokemons })
+          res.json({ message, data: pokemons })
         })
         .catch(error => {
           const message = "La liste des pokemons n'a pas pu être récupérée. Réessayer dans quelques instants"
-          res.status(500).json({ message, error })
+          res.status(500).json({ message, data: error })
         })
     } else {
       return Pokemon.findAll({ 
@@ -53,11 +53,11 @@ module.exports = (app) => {
       })
         .then(pokemons => {
           const message = 'La liste des pokémons a bien été récupérée.'
-          res.json({ message, pokemons })
+          res.json({ message, data: pokemons })
         })
         .catch(error => {
           const message = "La liste des pokemons n'a pas pu être récupérée. Réessayer dans quelques instants"
-          res.status(500).json({ message, error })
+          res.status(500).json({ message, data: error })
         })
     }
   })
