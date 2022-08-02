@@ -4,7 +4,8 @@
   "description": "API rest to handle some pokemon",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "NODE_ENV=production node app.js",
+    "dev": "NODE_ENV=development nodemon app.js"
   },
   "author": "SohKey",
   "license": "ISC",
